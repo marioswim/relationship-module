@@ -1,0 +1,8 @@
+name = Relacion entre producto y grupos
+description = Modulo para mostrar los grupos que tiene un producto y los productos que tiene un grupo.	
+core = 7.x
+
+stylesheets[all][] = css/css.css
+
+
+scripts[] = 'js/scripts.js'

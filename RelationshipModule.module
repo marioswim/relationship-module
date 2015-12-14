@@ -1,0 +1,77 @@
+<?php 
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path 
+ *   Which path of the site we're using to display help
+ * @param arg 
+ *   Array that holds the current path as returned from arg() function
+ */
+require_once("utils/getProducts.php");
+require_once("utils/getResearchGroups.php");
+
+function RelationshipModule_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#RelationshipModule":
+      return '<p>' . t("Block to show research group's products in research groups node, and show research groups includes in a product from product node.") . '</p>';
+      break;
+  }
+} 
+function RelationshipModule_block_info()
+{
+	 $blocks['research_groups'] = array(
+    // The name that will appear in the block list.
+    'info' => t('Research Groups Related'),
+    // Default setting.
+    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+   $blocks['product'] = array(
+    // The name that will appear in the block list.
+    'info' => t('products'),
+    // Default setting.
+    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  return $blocks;
+}
+
+function RelationshipModule_block_view($delta="")
+{
+  
+  switch ($delta) 
+  {
+    case 'product':
+      $block['subject'] = "<span>".t("<b>Offered</b> products, services and patents")."</span>";
+
+      $products=getProducts();
+      $block['content'] = theme("product_block",array("products" => $products,"lan" => menu_get_object()->language));
+      break;
+    
+    case "research_groups":
+       $block['subject'] = "<span>".t("Related research groups")."</span>";
+
+        $rg=getResearchGroups();
+        $block['content'] = theme("researchGroup_block",array("rg" => $rg,"lan" => menu_get_object()->language));
+      break;
+  }
+
+  
+   return $block;
+}
+
+function RelationshipModule_theme()
+{
+  return array
+  (
+    "product_block" => array
+    (
+      "template" => "templates/products",
+    ),
+    "researchGroup_block" => array
+    (
+      "template" => "templates/researchGroups",
+    ),
+
+  );
+}
