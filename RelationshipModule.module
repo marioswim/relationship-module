@@ -39,24 +39,35 @@ function RelationshipModule_block_info()
 function RelationshipModule_block_view($delta="")
 {
   
+  $block['subject']="";
+  $block['content']="";
   switch ($delta) 
   {
     case 'product':
-      $block['subject'] = "<span>".t("<b>Offered</b> products, services and patents")."</span>";
-
       $products=getProducts();
-      $block['content'] = theme("product_block",array("products" => $products,"lan" => menu_get_object()->language));
+      
+      if($products->rowCount()>0)
+      {
+        $block['subject'] = "<span>".t("<b>Offered</b> products, services and patents")."</span>";
+
+        $block['content'] = theme("product_block",array("products" => $products,"lan" => menu_get_object()->language));
+      }
+      
       break;
     
     case "research_groups":
-       $block['subject'] = "<span>".t("Related research groups")."</span>";
+      $rg=getResearchGroups();
 
-        $rg=getResearchGroups();
+      if($rg->rowCount()>0)
+      {
+
+        $block['subject'] = "<span>".t("Related research groups")."</span>";
+
         $block['content'] = theme("researchGroup_block",array("rg" => $rg,"lan" => menu_get_object()->language));
+      }
+       
       break;
   }
-
-  
    return $block;
 }
 
