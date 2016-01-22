@@ -57,16 +57,18 @@ function RelationshipModule_block_view($delta="")
     
     case "research_groups":
       $rg=getResearchGroups();
-
-      if($rg->rowCount()>0)
+      if(isset($rg))
       {
+        if($rg->rowCount()>0)
+        {
 
-        $block['subject'] = "<span>".t("Related research groups")."</span>";
+          $block['subject'] = "<span>".t("Related research groups")."</span>";
 
-        $block['content'] = theme("researchGroup_block",array("rg" => $rg,"lan" => menu_get_object()->language));
+          $block['content'] = theme("researchGroup_block",array("rg" => $rg,"lan" => menu_get_object()->language));
+        }
       }
-       
       break;
+
   }
    return $block;
 }
