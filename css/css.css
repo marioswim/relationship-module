@@ -104,6 +104,7 @@
 }
 #block-relationshipmodule-product .block-title > span
 {
+	background-color: rgb(196, 100, 19);
 	background-image: linear-gradient(rgb(228, 117, 22) 0px, rgb(196, 100, 19) 100%);
 	color: rgb(247, 213, 188);
 }
@@ -113,22 +114,27 @@
 }
 #block-relationshipmodule-research-groups .block-title > span
 {
+	background-color: rgb(51, 100, 153);
 	background-image: linear-gradient(rgb(59, 123, 179) 0px, rgb(51, 100, 153) 100%);
 	color:#c4d5e8;
 }
 #block-relationshipmodule-product .offer-products .product
 {
+	background-color: rgb(211, 212, 213);
 	background-image: radial-gradient(at 50% 50%, rgb(231, 232, 233) 0px, rgb(211, 212, 213) 100%);
 }
 #block-relationshipmodule-research-groups .related-groups .research-group
 {
+	background-color: rgb(211, 212, 213);
 	background-image: radial-gradient(at 50% 50%, rgb(231, 232, 233) 0px, rgb(211, 212, 213) 100%);
 }
 #block-relationshipmodule-product .offer-products .product:hover
 {
-	background: #fbeade;
+	background-color: #fbeade;
 }
 #block-relationshipmodule-research-groups .related-groups .research-group:hover
 {
+	background-color: #d7e2f0;
 	background:radial-gradient(ellipse at center,#e2eaf4 0,#d7e2f0 100%);
+
 }
