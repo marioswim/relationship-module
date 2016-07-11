@@ -23,7 +23,8 @@ function getProducts()
                     AND 
                     g.field_grupos_relacionados_tid = t.tid
                     AND
-                    t.name like '".$idGrp."')"; 
+                    t.name like '".$idGrp."')
+                    AND status = 1"; 
 
         $result=db_query($query);
 

@@ -28,7 +28,8 @@ function getResearchGroups()
                 AND
                 n1.nid=g1.entity_id 
                 AND 
-                g1.field_grupos_relacionados_tid = t1.tid) AND n.language = '".$lan."'";
+                g1.field_grupos_relacionados_tid = t1.tid) AND n.language = '".$lan."'
+                and status = 1";
                       
 
     $result=db_query($query);
